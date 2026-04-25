@@ -13,6 +13,7 @@ print(f'    Your cards: {user_cards}, current score: {score}')
 
 computer_cards = []
 computer_cards.append(cards[random.randint(0,12)])
+computer_score = 0
 print(f'    Computer first card is: {computer_cards}')
 
 another = input('Do you want another card? Type y/n: ')
@@ -24,24 +25,23 @@ while True:
             print(f'    Your cards: {user_cards}, current score: {score}')
             print(f'    Computer first card is: {computer_cards}')
             another = input('Do you want another card? Type y/n: ')
-        else:
+        elif score > 21:
             print(f'    Your cards: {user_cards}, current score: {score}')
-            print('You went over. You lose.')
+            print('You lose. You went over')
             break
     else:
         print(f'    Your final cards: {user_cards}, final score: {score}')
         computer_cards.append(cards[random.randint(0,12)])
         computer_score = sum(computer_cards)
         print(f'    Computer final cards: {computer_cards}, final score: {computer_score}')
-        if computer_score > 21:
+        if score == computer_score:
+            print('         Draw.')
+        elif computer_score > 21:
             print(f'    Computer final cards: {computer_cards}, final score: {computer_score}')
-            print('Computer wend over. You win.')
+            print('Computer went over. You win.')
+        elif computer_score <= 21 and computer_score < score:
+            print('         You win.')
+        else:
+            print('         You lose.')
         break
-
-if score == computer_score:
-    print('         Draw.')
-elif score > computer_score:
-    print('         You win.')
-else:
-    print('         You lose.')
 

@@ -7,11 +7,24 @@ random.shuffle(cards)
 def my_cards():
 
     user_cards = []
-    user_cards.extend(cards[0][1])
-
+    user_cards.append(cards[0])
+    user_cards.append(cards[1])
     score = sum(user_cards)
+    print(f'Your cards: {user_cards}, current score: {score}')
 
-    return f'You cards: {user_cards}, current score: {score}'
+    another = input('Do you want another card? Type y/n: ')
+    while True:
+        if another == 'y':
+            user_cards.append(cards[2])
+            score = sum(user_cards)
+            if score < 21:
+                print(f'Your cards: {user_cards}, current score: {score}')
+                another = input('Do you want another card? Type y/n: ')
+            elif score > 21:
+                print(f'Your cards: {user_cards}, current score: {score}')
+                return 'You went over. You lose.'
+        else:
+            return f'Your final cards: {user_cards}, final score: {score}'
 
-my_cards()
+print(my_cards())
 

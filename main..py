@@ -12,14 +12,14 @@ while want_to_play == 'y':
     print("-" * 25)
 
     user_cards = []
-    user_cards.append(cards[0])
-    user_cards.append(cards[1])
+    user_cards.append(cards[random.randint(0,12)])
+    user_cards.append(cards[random.randint(0,12)])
     score = sum(user_cards)
     print(f'Your cards: {user_cards}, current score: {score}')
 
     computer_cards = []
     computer_cards.append(cards[random.randint(0,12)])
-    computer_score = 0
+    computer_score = -1
     print(f'Computer shows: {computer_cards}')
 
     another = input('Draw another card? Type y/n: ')
@@ -52,6 +52,7 @@ while want_to_play == 'y':
             break
     again = input('\nDo you want to play again ? Type y/n: ')
     if again == 'y':
+        print('\n' * 5)
         continue
     else:
         print('\nThanks for playing this Blackjack game. ^^')
